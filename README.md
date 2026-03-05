@@ -18,24 +18,24 @@ Add the following workflow to your repository in `.github/workflows/pr-reviewer.
 ```yaml
 name: AI PR Reviewer
 on:
-  pull_request:
-    types: [opened, synchronize]
+ pull_request:
+ types: [opened, synchronize]
 
 jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+ review:
+ runs-on: ubuntu-latest
+ steps:
+ - name: Checkout code
+ uses: actions/checkout@v4
 
-      - name: AI PR Reviewer
-        uses: your-repo/pr-reviewer@main
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-          model: "gpt-4o"
-          strictness: "high"
-          review_focus: "all"
+ - name: AI PR Reviewer
+ uses: your-repo/pr-reviewer@main
+ with:
+ github_token: ${{ secrets.GITHUB_TOKEN }}
+ openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+ model: "gpt-4o"
+ strictness: "high"
+ review_focus: "all"
 ```
 
 ## Inputs
