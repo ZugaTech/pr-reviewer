@@ -1,0 +1,18 @@
+diff --git a/Component.jsx b/Component.jsx
+index e69de29..b8b9c02 100644
+--- a/Component.jsx
++++ b/Component.jsx
+@@ -1,10 +1,12 @@
+-import React from 'react';
++import React, { useEffect, useState } from 'react';
+ 
+ export const MyComponent = ({ userId }) => {
++  const [data, setData] = useState(null);
++
++  // BUG: Missing dependency array, will run on every render
++  useEffect(() => {
++    fetch(`/api/user/${userId}`).then(res => res.json()).then(setData);
++  });
++
+   return <div>{data ? data.name : 'Loading...'}</div>;
+ };

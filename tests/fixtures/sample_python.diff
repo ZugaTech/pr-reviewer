@@ -1,0 +1,21 @@
+diff --git a/auth.py b/auth.py
+index e69de29..b8b9c02 100644
+--- a/auth.py
++++ b/auth.py
+@@ -1,10 +1,15 @@
+ import sqlite3
+ 
+ def login(username, password):
+     db = sqlite3.connect("users.db")
+     cursor = db.cursor()
+-    # Secure query
+-    cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
++    # DANGEROUS: SQL Injection vulnerability introduced
++    query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
++    cursor.execute(query)
+     return cursor.fetchone()
++
++def get_user_profile(user_id):
++    # Unoptimized: creating new connection every time
++    db = sqlite3.connect("users.db")
++    return db.execute(f"SELECT * FROM profiles WHERE id = {user_id}").fetchone()
