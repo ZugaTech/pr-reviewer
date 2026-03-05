@@ -1,6 +1,6 @@
-# AI-Powered PR Reviewer 🤖
+﻿# AI-Powered PR Reviewer 🤖
 
-A production-ready GitHub Action that automatically reviews pull requests using GPT-4o. It focuses on bugs, security, and performance while providing structured inline feedback and suggested fixes.
+A production-ready GitHub Action that automatically reviews pull requests using GPT-4o. It focuses on bugs, security and performance while providing structured inline feedback and suggested fixes.
 
 ## Features
 
