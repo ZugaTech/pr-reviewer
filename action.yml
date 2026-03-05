@@ -1,0 +1,46 @@
+name: "AI-Powered PR Reviewer"
+description: "Automatically reviews pull requests using GPT-4o with structured inline comments."
+author: "Antigravity"
+inputs:
+  github_token:
+    description: "GitHub Token (usually secrets.GITHUB_TOKEN)"
+    required: true
+  openai_api_key:
+    description: "OpenAI API Key"
+    required: true
+  model:
+    description: "OpenAI Model to use"
+    default: "gpt-4o"
+  strictness:
+    description: "Review strictness (low, medium, high, paranoid)"
+    default: "medium"
+  style_guide:
+    description: "Programming style guide to follow"
+    default: "none"
+  review_focus:
+    description: "Focus area for the review"
+    default: "all"
+  max_files:
+    description: "Maximum number of files to review"
+    default: "25"
+  max_lines_per_file:
+    description: "Maximum lines to review per file"
+    default: "500"
+  exclude_patterns:
+    description: "Comma-separated list of glob patterns to exclude"
+    default: "*.md,*.txt,*.lock,*.sum,package-lock.json"
+  post_summary:
+    description: "Whether to post a top-level summary comment"
+    default: "true"
+  min_severity:
+    description: "Minimum severity to post as a comment"
+    default: "warning"
+  approve_if_clean:
+    description: "Whether to auto-approve if no issues are found"
+    default: "false"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "check-circle"
+  color: "green"
